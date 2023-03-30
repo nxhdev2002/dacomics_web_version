@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 
 const profile = () => {
   return (
-    <Layout>
+    <Layout title={"Cá nhân"}>
       <div>
         <p>This is Profile page</p>
       </div>

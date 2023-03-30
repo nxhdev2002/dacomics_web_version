@@ -1,23 +1,24 @@
-import React from 'react'
+import React from "react";
 
 // import các component cần thiết
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 // định nghĩa kiểu props cho component Layout
 type LayoutProps = {
-  children: React.ReactNode // children là các component con được truyền vào Layout
-}
+  title: string;
+  children: React.ReactNode; // children là các component con được truyền vào Layout
+};
 
 // tạo component Layout
-const Layout = ({ children }: LayoutProps) => {
+const Layout = ({ title, children }: LayoutProps) => {
   return (
     <>
-      <Header title={'headr'} />
-        <main>{children}</main>
+      <Header title={title} />
+      <main>{children}</main>
       <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Layout
+export default Layout;

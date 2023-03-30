@@ -1,14 +1,14 @@
 import React from "react";
 import Layout from "@/components/Layout";
 
-const about = () => {
+const category = () => {
   return (
-    <Layout title={"Giới thiệu"}>
+    <Layout title={"Danh mục"}>
       <div>
-        <p>This is About page</p>
+        <p>This is Category page</p>
       </div>
     </Layout>
   );
 };
 
-export default about;
+export default category;
