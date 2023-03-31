@@ -3,7 +3,7 @@ import Layout from "@/components/Layout";
 
 const search = () => {
   return (
-    <Layout>
+    <Layout title={"Tìm kiếm"}>
       <div>
         <p>This is Search page</p>
       </div>

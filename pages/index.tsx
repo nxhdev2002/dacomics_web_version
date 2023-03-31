@@ -1,5 +1,8 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
+import Comic from "@/components/Comic/BookCard";
+import BookCard from "@/components/Comic/BookCard";
+import PopularPost from "@/components/Home/Popular";
 
 const IndexPage = () => {
   return (
@@ -8,8 +11,7 @@ const IndexPage = () => {
         <title>Trang chủ</title>
       </Head>
       <Layout title={"Trang chủ"}>
-        <h1>Xin chào!</h1>
-        <p>Đây là trang chủ của ứng dụng của bạn.</p>
+        <PopularPost />
       </Layout>
     </>
   );

@@ -9,7 +9,7 @@ type HeaderProps = {
 // tạo component Header
 const Header = ({ title }: HeaderProps) => {
   return (
-    <header>
+    <header className="fixed top-0 z-10 w-full">
       <nav className="w-full bg-gray-800 p-4 font-normal text-white">
         {title}
       </nav>

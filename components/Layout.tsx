@@ -15,7 +15,7 @@ const Layout = ({ title, children }: LayoutProps) => {
   return (
     <>
       <Header title={title} />
-      <main>{children}</main>
+      <main className="py-6">{children}</main>
       <Footer />
     </>
   );
