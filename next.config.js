@@ -3,7 +3,7 @@ const { redirect } = require('next/dist/server/api-utils');
 const slugify = require('slugify');
 const nextConfig = {
   reactStrictMode: true,
-  images: { domains: ['st.nettruyenvt.com'], formats: ['image/avif', 'image/webp'], },
+  images: { domains: ['st.nettruyenvt.com', 'mangadex.org'], formats: ['image/avif', 'image/webp'], },
   async rewrites() {
     return [
       {

@@ -8,26 +8,32 @@ const PopularPost = () => {
         <BookCard
           thumbnail="https://st.nettruyenvt.com/data/comics/32/vo-luyen-dinh-phong.jpg"
           title="The Great Gatsby"
+          url={"http://localhost:3000/af6f72d6-af16-4974-ac72-c8ca8cb6db58"}
         />
         <BookCard
           thumbnail="https://st.nettruyenvt.com/data/comics/32/vo-luyen-dinh-phong.jpg"
           title="To Kill a Mockingbird To Kill a Mockingbird To Kill a Mockingbird"
+          url={"http://localhost:3000/af6f72d6-af16-4974-ac72-c8ca8cb6db58"}
         />
         <BookCard
           thumbnail="https://st.nettruyenvt.com/data/comics/32/vo-luyen-dinh-phong.jpg"
           title="1984"
+          url={"http://localhost:3000/af6f72d6-af16-4974-ac72-c8ca8cb6db58"}
         />
         <BookCard
           thumbnail="https://st.nettruyenvt.com/data/comics/32/vo-luyen-dinh-phong.jpg"
           title="1984"
+          url={"http://localhost:3000/af6f72d6-af16-4974-ac72-c8ca8cb6db58"}
         />
         <BookCard
           thumbnail="https://st.nettruyenvt.com/data/comics/32/vo-luyen-dinh-phong.jpg"
           title="1984"
+          url={"http://localhost:3000/af6f72d6-af16-4974-ac72-c8ca8cb6db58"}
         />
         <BookCard
           thumbnail="https://st.nettruyenvt.com/data/comics/32/vo-luyen-dinh-phong.jpg"
           title="1984"
+          url={"http://localhost:3000/af6f72d6-af16-4974-ac72-c8ca8cb6db58"}
         />
       </div>
     </div>
