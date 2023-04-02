@@ -143,12 +143,18 @@ export default function BookPage() {
           <div className="relative">
             {images.map((val, i) => {
               return (
-                <img
-                  key={i}
-                  src={val}
-                  alt={val}
-                  style={{ width: "100%", height: "auto" }}
-                />
+                <div className="h-full w-full">
+                  <Image
+                    src={val}
+                    width={200}
+                    height={160}
+                    sizes="(max-width: 768px) 100vw,
+              (max-width: 1200px) 50vw,
+              33vw"
+                    style={{ height: "100%", width: "100%" }} //The point is right there!
+                    alt={"Picture for " + i}
+                  />
+                </div>
               );
             })}
           </div>
