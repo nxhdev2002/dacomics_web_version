@@ -4,7 +4,7 @@ import { getMangaByKeyWord } from "@/libs/MangaDex";
 import { Comic } from "@/types/comic";
 import BookCard from "@/components/Comic/BookCard";
 
-const search = () => {
+const Search = () => {
   const [results, setResults] = useState<Comic[] | null>(null);
   const handleSearch = async (event: { target: { value: string } }) => {
     const response = await getMangaByKeyWord(event.target.value);
@@ -37,4 +37,4 @@ const search = () => {
   );
 };
 
-export default search;
+export default Search;
