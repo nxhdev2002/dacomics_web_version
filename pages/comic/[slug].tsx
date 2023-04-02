@@ -1,8 +1,3 @@
-import {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  InferGetServerSidePropsType,
-} from "next";
 import Image from "next/image";
 import { Comic } from "@/types/comic";
 import Layout from "@/components/Layout";

@@ -1,4 +1,5 @@
 import { chapter } from "@/types/chapter";
+import Link from "next/link";
 import React from "react";
 
 interface ChapterListProps {
@@ -19,12 +20,7 @@ const ChapterList: React.FC<ChapterListProps> = ({ chapters }) => {
               <span className="ml-2 w-0 flex-1 truncate">{chapter.title}</span>
             </div>
             <div className="ml-4 flex-shrink-0">
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Read
-              </a>
+              <Link href={`/chapter/${chapter.id}`}>Read</Link>
             </div>
           </li>
         ))}

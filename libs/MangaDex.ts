@@ -56,13 +56,51 @@ export const getChapterById = async (id: string): Promise<chapter[] | null> => {
   }
 };
 
-export const getPictureByChapterId = async (id: string): Promise<string[]> => {
-  let request = await instance.get(`/at-home/server/${id}?forcePort443=false`);
+export const getPictureByChapterId = async (
+  id: string
+): Promise<string[] | null> => {
+  try {
+    let request = await instance.get(
+      `/at-home/server/${id}?forcePort443=false`
+    );
+    let data = request.data;
+    let baseUrl = data.baseUrl;
+    let result: string[] = [];
+    data.chapter.data.forEach((picture: any) => {
+      result.push(`${baseUrl}/data/${data.chapter.hash}/${picture}`);
+    });
+    console.log(result[0]);
+    return result;
+  } catch {
+    return null;
+  }
+};
+
+export const getPopularComic = async (): Promise<Comic[] | null> => {
+  let request = await instance.get(
+    `/manga?includes[]=cover_art&includes[]=artist&includes[]=author&order[followedCount]=desc&contentRating[]=safe&contentRating[]=suggestive&hasAvailableChapters=true&createdAtSince=2023-03-02T17%3A50%3A43`
+  );
   let data = request.data;
-  let baseUrl = data.baseUrl;
-  let result: string[] = [];
-  data.chapter.data.forEach((picture: any) => {
-    result.push(`${baseUrl}/data/${data.chapter.hash}/${picture}`);
+  let res: Comic[] = [];
+  data.data.forEach((comic: any) => {
+    let thumbnail_name = comic.relationships.filter(
+      (obj: { type: string }) => obj.type === "cover_art"
+    )[0].attributes.fileName;
+    let author = comic.relationships.filter(
+      (obj: { type: string }) => obj.type === "author"
+    )[0].attributes.name;
+    res.push({
+      id: comic.id,
+      name: comic.attributes.title.en,
+      thumbnail: `https://mangadex.org/covers/${comic.id}/${thumbnail_name}.512.jpg`,
+      author: author,
+      description:
+        typeof comic.attributes.description.en === "undefined"
+          ? "Không có mô tả về bộ truyện này"
+          : comic.attributes.description.en,
+      numChapters: "99",
+      chapters: [],
+    });
   });
-  return result;
+  return res;
 };

@@ -1,17 +1,24 @@
 import Head from "next/head";
 import Layout from "@/components/Layout";
-import Comic from "@/components/Comic/BookCard";
-import BookCard from "@/components/Comic/BookCard";
 import PopularPost from "@/components/Home/Popular";
+import { getPopularComic } from "@/libs/MangaDex";
+import { useEffect, useState } from "react";
+import { Comic } from "@/types/comic";
 
 const IndexPage = () => {
+  const [posts, setPosts] = useState<Comic[]>([]);
+  useEffect(() => {
+    getPopularComic().then((res) => {
+      if (res) setPosts(res);
+    });
+  }, []);
   return (
     <>
       <Head>
         <title>Trang chủ</title>
       </Head>
       <Layout title={"Trang chủ"}>
-        <PopularPost />
+        <PopularPost posts={posts} />
       </Layout>
     </>
   );
