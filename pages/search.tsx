@@ -26,7 +26,7 @@ const Search = () => {
         {results ? (
           <div className="grid grid-cols-2 gap-4 md:grid-cols-5">
             {results.map((result) => (
-              <BookCard comic={result} />
+              <BookCard comic={result} key={result.id} />
             ))}
           </div>
         ) : (
