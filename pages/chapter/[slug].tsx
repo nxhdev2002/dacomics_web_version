@@ -153,6 +153,7 @@ export default function BookPage() {
               33vw"
                     style={{ height: "100%", width: "100%" }} //The point is right there!
                     alt={"Picture for " + i}
+                    key={i}
                   />
                 </div>
               );
