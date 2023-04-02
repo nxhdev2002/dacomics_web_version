@@ -143,7 +143,7 @@ export default function BookPage() {
           <div className="relative">
             {images.map((val, i) => {
               return (
-                <div className="h-full w-full">
+                <div className="h-full w-full" key={i}>
                   <Image
                     src={val}
                     width={200}
@@ -153,7 +153,6 @@ export default function BookPage() {
               33vw"
                     style={{ height: "100%", width: "100%" }} //The point is right there!
                     alt={"Picture for " + i}
-                    key={i}
                   />
                 </div>
               );
