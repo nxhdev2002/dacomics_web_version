@@ -3,12 +3,15 @@ import Layout from "@/components/Layout";
 import { getMangaByKeyWord } from "@/libs/MangaDex";
 import { Comic } from "@/types/comic";
 import BookCard from "@/components/Comic/BookCard";
+import axios from "axios";
 
 const Search = () => {
   const [results, setResults] = useState<Comic[] | null>(null);
   const handleSearch = async (event: { target: { value: string } }) => {
-    const response = await getMangaByKeyWord(event.target.value);
-    setResults(response);
+    const response = await axios.get(
+      "/api/search?keyword=" + event.target.value
+    );
+    setResults(response.data);
   };
 
   return (

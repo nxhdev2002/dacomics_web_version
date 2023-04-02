@@ -11,8 +11,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { convertImage, toBase64 } from "@/utils/helpers";
-import { chapter } from "@/types/chapter";
-
+import axios from "axios";
 interface BookDetailProps {
   book: Comic;
 }
@@ -128,8 +127,8 @@ export default function BookPage() {
   useEffect(() => {
     setLoading(true);
     if (slug) {
-      getPictureByChapterId(slug as string).then((res) => {
-        setImages(res);
+      axios.get("/api/picture?id=" + (slug as string)).then((res) => {
+        setImages(res.data);
         setLoading(false);
       });
     }

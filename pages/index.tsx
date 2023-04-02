@@ -5,12 +5,13 @@ import { getPopularComic } from "@/libs/MangaDex";
 import { useEffect, useState } from "react";
 import { Comic } from "@/types/comic";
 import Link from "next/link";
+import axios from "axios";
 
 const IndexPage = () => {
   const [posts, setPosts] = useState<Comic[]>([]);
   useEffect(() => {
-    getPopularComic().then((res) => {
-      if (res) setPosts(res);
+    axios.get("/api/popular").then((res) => {
+      if (res) setPosts(res.data);
     });
   }, []);
   return (

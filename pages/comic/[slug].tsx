@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import { convertImage, toBase64 } from "@/utils/helpers";
 import Link from "next/link";
+import axios from "axios";
 
 interface BookDetailProps {
   book: Comic;
@@ -129,9 +130,9 @@ export default function BookPage() {
   useEffect(() => {
     console.log(slug);
     if (slug) {
-      getMangaById(slug as string).then((res) => {
+      axios.get("/api/manga?id=" + slug).then((res) => {
         setLoading(false);
-        setComic(res);
+        setComic(res.data);
       });
     }
     setLoading(true);
