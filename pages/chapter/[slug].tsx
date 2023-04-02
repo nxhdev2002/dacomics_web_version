@@ -139,7 +139,7 @@ export default function BookPage() {
   return (
     <>
       <Layout title={"Đọc truyện"}>
-        <div className="container relative mx-auto overflow-scroll md:max-w-lg">
+        <div className="container relative mx-auto md:max-w-lg">
           <div className="relative">
             {images.map((val, i) => {
               return (
