@@ -7,6 +7,7 @@ import { FC, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { convertImage, toBase64 } from "@/utils/helpers";
+import Link from "next/link";
 
 interface BookDetailProps {
   book: Comic;
@@ -45,29 +46,34 @@ const BookDetail: React.FC<BookDetailProps> = ({ book }) => {
                 Số chương: {book.numChapters}
               </p>
               <div className="flex gap-4">
-                <button className="flex items-center justify-center rounded bg-gradient-to-r from-slate-900 to-slate-700 px-4 py-2 font-bold text-white">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={1.5}
-                    stroke="currentColor"
-                    className="mr-2 h-6 w-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
-                    />
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                    />
-                  </svg>
-                  <span>Đọc từ đầu</span>
-                </button>
-
+                <Link
+                  href={
+                    "/chapter/" + book.chapters[book.chapters.length - 1].id
+                  }
+                >
+                  <button className="flex items-center justify-center rounded bg-gradient-to-r from-slate-900 to-slate-700 px-4 py-2 font-bold text-white">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="mr-2 h-6 w-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z"
+                      />
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                      />
+                    </svg>
+                    <span>Đọc từ đầu</span>
+                  </button>
+                </Link>
                 <button className="flex items-center justify-center rounded bg-gradient-to-b from-slate-500 to-orange-500 px-4 py-2 font-bold text-white">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

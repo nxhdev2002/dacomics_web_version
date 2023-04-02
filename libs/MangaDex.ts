@@ -104,3 +104,35 @@ export const getPopularComic = async (): Promise<Comic[] | null> => {
   });
   return res;
 };
+
+export const getMangaByKeyWord = async (
+  keyword: string
+): Promise<Comic[] | null> => {
+  let request = await instance.get(
+    `/manga?title=${keyword}&limit=5&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&includes[]=cover_art&includes[]=author&order[relevance]=desc`
+  );
+  let data = request.data;
+  let res: Comic[] = [];
+  data.data.forEach((comic: any) => {
+    console.log(comic);
+    let thumbnail_name = comic.relationships.filter(
+      (obj: { type: string }) => obj.type === "cover_art"
+    )[0].attributes.fileName;
+    let author = comic.relationships.filter(
+      (obj: { type: string }) => obj.type === "author"
+    )[0].attributes.name;
+    res.push({
+      id: comic.id,
+      name: comic.attributes.title.en,
+      thumbnail: `https://mangadex.org/covers/${comic.id}/${thumbnail_name}.512.jpg`,
+      author: author,
+      description:
+        typeof comic.attributes.description.en === "undefined"
+          ? "Không có mô tả về bộ truyện này"
+          : comic.attributes.description.en,
+      numChapters: "99",
+      chapters: [],
+    });
+  });
+  return res;
+};

@@ -1,4 +1,5 @@
 import { Comic } from "@/types/comic";
+import { toBase64, convertImage } from "@/utils/helpers";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -16,6 +17,10 @@ const BookCard: React.FC<BookCardProps> = ({ comic }) => {
             alt={`Thumbnail of ${comic.name}`}
             width={300}
             height={450}
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(
+              convertImage(700, 475)
+            )}`}
           />
         </div>
         <div className="flex flex-col p-4">
