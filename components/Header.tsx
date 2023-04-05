@@ -11,7 +11,7 @@ const Header = ({ title, components }: HeaderProps) => {
   return (
     <header className="fixed top-0 z-10 w-full">
       <nav className="flex w-full justify-between bg-gray-800 p-4 font-normal text-white">
-        <h1>{title}</h1>
+        <h1 className="overflow-ellipsis">{title}</h1>
         {components}
       </nav>
     </header>

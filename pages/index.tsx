@@ -9,9 +9,13 @@ import axios from "axios";
 
 const IndexPage = () => {
   const [posts, setPosts] = useState<Comic[]>([]);
+  const [loading, isLoading] = useState<boolean>(true);
   useEffect(() => {
     axios.get("/api/popular").then((res) => {
-      if (res) setPosts(res.data);
+      if (res) {
+        setPosts(res.data);
+        isLoading(false);
+      }
     });
   }, []);
   return (
@@ -40,7 +44,7 @@ const IndexPage = () => {
           </Link>
         }
       >
-        <PopularPost posts={posts} />
+        {loading ? <p>Loading</p> : <PopularPost posts={posts} />}
       </Layout>
     </>
   );

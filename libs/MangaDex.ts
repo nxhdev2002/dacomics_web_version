@@ -24,7 +24,7 @@ export const getMangaById = async (id: string): Promise<Comic | null> => {
         typeof data.data.attributes.description.en === "undefined"
           ? "Không có mô tả về bộ truyện này"
           : data.data.attributes.description.en,
-      numChapters: "99",
+      numChapters: chapters ? chapters.length.toString() : "99",
       chapters: chapters ? chapters : [],
     };
   } catch {
@@ -35,7 +35,7 @@ export const getMangaById = async (id: string): Promise<Comic | null> => {
 export const getChapterById = async (id: string): Promise<chapter[] | null> => {
   try {
     let request = await instance.get(
-      `/manga/${id}/feed?limit=10&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage%5B%5D=en`
+      `/manga/${id}/feed?limit=20&includes[]=scanlation_group&includes[]=user&order[volume]=desc&order[chapter]=desc&offset=0&contentRating[]=safe&contentRating[]=suggestive&contentRating[]=erotica&contentRating[]=pornographic&translatedLanguage%5B%5D=en`
     );
     let data = request.data;
     let result: chapter[] = [];

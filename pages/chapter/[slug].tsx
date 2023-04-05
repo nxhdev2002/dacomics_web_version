@@ -2,16 +2,16 @@ import Image from "next/image";
 import { Comic } from "@/types/comic";
 import Layout from "@/components/Layout";
 import ChapterList from "@/components/Comic/ChapterList";
-import {
-  getChapterById,
-  getMangaById,
-  getPictureByChapterId,
-} from "@/libs/MangaDex";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Head from "next/head";
 import { convertImage, toBase64 } from "@/utils/helpers";
 import axios from "axios";
+import {
+  NextFloatButton,
+  PreviousFloatButton,
+} from "@/components/Button/FloatButton";
+import Link from "next/link";
 interface BookDetailProps {
   book: Comic;
 }
@@ -158,6 +158,14 @@ export default function BookPage() {
               );
             })}
           </div>
+          {/* float butt */}
+          <Link href={"/chapter/"}>
+            <NextFloatButton />
+          </Link>
+
+          <Link href={"/chapter"}>
+            <PreviousFloatButton />
+          </Link>
         </div>
       </Layout>
     </>
